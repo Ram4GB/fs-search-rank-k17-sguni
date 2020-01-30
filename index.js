@@ -42,15 +42,21 @@ async function callRequest(firstID, totalStudent) {
 function getMyRank(id) {
   let buffer = fs.readFileSync("data.txt");
   let array = JSON.parse(buffer);
-  array.sort((a, b) => !(a.point - b.point));
+  array = array
+    .sort(
+      (a, b) => parseFloat(a.point).toFixed(2) - parseFloat(b.point).toFixed(2)
+    )
+    .reverse();
+  // get object
   let objectInArray = array.filter(element => {
-    return parseInt(id) == element.id;
+    return parseInt(id) === element.id;
   });
+  // get rank
   let rank = array.findIndex(element => {
-    return parseInt(id) == element.id;
+    return parseInt(id) === element.id;
   });
   if (objectInArray.length == 1)
-    return { ...objectInArray[0], rank, total: array.length };
+    return { ...objectInArray[0], rank: rank + 1, total: array.length };
   return null;
 }
 
@@ -60,7 +66,6 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   let { id } = req.body;
-  console.log(id);
   if (!id)
     return res.render("index", {
       success: false,
@@ -68,7 +73,6 @@ app.post("/", (req, res) => {
       data: null
     });
   let data = getMyRank(id);
-  console.log(data);
   if (data) return res.render("index", { success: true, data, error: null });
   return res.render("index", { success: false, error: "Không tìm thấy MSV" });
 });
