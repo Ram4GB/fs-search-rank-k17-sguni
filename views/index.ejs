@@ -50,10 +50,9 @@
         <h3>Tìm hạng sinh viên</h3>
         <form method="POST" action="/">
           <select value="<%= faculty%>" name="faculty">
-            <option value="cntt_k17">
-              Công nghê thông tin - K17
-            </option>
-            <option value="tc_kt_k17">Tài chính kế toán - k17</option>
+            <% faculty_array_server.forEach(function(faculty_item) { %>
+              <option value="<%= faculty_item.value %>"><%= faculty_item.name  %></option> 
+            <% }) %>
           </select>
           <input value="<%= id%>" name="id" placeholder="Điền mã sinh viên đây" id="id" type="text" autocomplete="off" />
           <button id="submit-button">Nhấn để tìm</button>
@@ -77,6 +76,20 @@
           <div>
             <span style="font-weight: bold;">Điểm hệ 4:</span> <%= data.point %>
           </div>
+          <div>
+            <span style="font-weight: bold;">Điểm tích lũy hệ 10:</span> <%= data.point_contribution_lv10 %>
+          </div>
+          <div>
+            <span style="font-weight: bold;">Điểm tích lũy hệ 4:</span> <%= data.point_contribution_lv4 %>
+          </div>
+          <div>
+            <span style="font-weight: bold;">Số tính chỉ:</span> <%= data.session %>
+          </div>
+          <div>
+            <span style="font-weight: bold;">Có bao người đồng vị trí điểm với bạn:</span> <% data.count.forEach(function(e) { %>
+                  <%= e.id %>
+            <% }) %>
+          </div>
         </div>
         <% } %> <% if(success==false){ %>
         <div class="alert alert-danger" role="alert">
@@ -96,7 +109,7 @@
     <footer>
       Copyright &copy Ram4GB 2020 ❤️
     </footer>
-    <audio controls autoplay loop style="display:block;margin: auto;" >
+    <audio controls loop style="display:block;margin: auto;" >
       <source type="audio/mp3" src="./NhacThienNhien-Hoatau_pxf6.mp3" />
     </audio>
   </div>
