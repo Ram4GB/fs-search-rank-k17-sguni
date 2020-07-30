@@ -49,9 +49,10 @@
       <div id="content">
         <h3>Tìm hạng sinh viên</h3>
         <form method="POST" action="/">
-          <select value="<%= faculty%>" name="faculty">
+          <select value="<%= faculty %>" name="faculty">
             <% faculty_array_server.forEach(function(faculty_item) { %>
-              <option value="<%= faculty_item.value %>"><%= faculty_item.name  %></option> 
+              <% var selected = faculty_item.value == faculty ? "selected" : "" %>
+              <option <%= selected %> value="<%= faculty_item.value %>"><%= faculty_item.name  %></option> 
             <% }) %>
           </select>
           <input value="<%= id%>" name="id" placeholder="Điền mã sinh viên đây" id="id" type="text" autocomplete="off" />

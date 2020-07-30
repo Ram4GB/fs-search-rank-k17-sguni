@@ -39,6 +39,9 @@ app.get("/", (req, res) => {
 // Process a request send to the server
 app.post("/", (req, res) => {
   let { id } = req.body;
+
+  console.log(req.body.faculty)
+
   if (!id)
     return res.render("index", {
       success: false,
