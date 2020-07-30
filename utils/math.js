@@ -4,8 +4,14 @@ const rp = require("request-promise");
 const cheerio = require("cheerio");
 
 module.exports = {
-  getMyRank: (id) => {
-    let buffer = fs.readFileSync(`data/${new Date().getFullYear()}.txt`);
+  getMyRank: (id, faculty) => {
+    let buffer
+
+    if(!faculty) return null
+    if(!id) return null
+
+    buffer = fs.readFileSync(`./data/${faculty}.txt`);
+
     let array = JSON.parse(buffer);
     array = array
       .sort(
@@ -24,7 +30,7 @@ module.exports = {
       return { ...objectInArray[0], rank: rank + 1, total: array.length };
     return null;
   },
-  callRequest: async (firstID, totalStudent) => {
+  callRequest: async (firstID, totalStudent, fileName = null) => {
     const total = firstID + totalStudent - 1;
     let array = [];
     try {
@@ -42,7 +48,7 @@ module.exports = {
           console.log(`${i} :`, point);
         }).catch((e)=> console.log(i, e));
       }
-      fs.writeFile(`data/${new Date().getFullYear()}.txt`, JSON.stringify(array), function (err) {
+      fs.writeFile(fileName ? `/data/${fileName}.txt` : `data/${new Date().getFullYear()}.txt`, JSON.stringify(array), function (err) {
         if (err) console.log(err);
         console.log("Write file successfully");
       });

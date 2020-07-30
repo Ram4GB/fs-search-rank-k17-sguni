@@ -49,11 +49,17 @@
       <div id="content">
         <h3>Tìm hạng sinh viên</h3>
         <form method="POST" action="/">
-          <input name="id" placeholder="Điền mã sinh viên đây" id="id" type="text" autocomplete="off" />
+          <select value="<%= faculty%>" name="faculty">
+            <option value="cntt_k17">
+              Công nghê thông tin - K17
+            </option>
+            <option value="tc_kt_k17">Tài chính kế toán - k17</option>
+          </select>
+          <input value="<%= id%>" name="id" placeholder="Điền mã sinh viên đây" id="id" type="text" autocomplete="off" />
           <button id="submit-button">Nhấn để tìm</button>
         </form>
         <p>
-          Bạn điền mã số sinh viên khoa công nghệ thông tin K17 vào để tra ra hạng
+          Bạn điền mã số sinh viên khoa vào để tra ra hạng
           của mình nhé.
         </p>
         <p>Vd như: <strong>3117410001</strong></p>

@@ -79,6 +79,12 @@ button:hover {
   background-color: var(--acent-color);
 }
 
+select {
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+}
+
 .bg-dark {
   background-color: var(--acent-color) !important;
 }
