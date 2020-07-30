@@ -26,7 +26,8 @@ app.post("/", (req, res) => {
     return res.render("index", {
       success: false,
       error: "Mời bạn nhập ID",
-      data: null
+      data: null,
+      id: '', faculty: 'cntt_k17'
     });
 
   if (!req.body.faculty)
