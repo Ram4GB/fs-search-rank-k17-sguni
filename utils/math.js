@@ -25,6 +25,8 @@ module.exports = {
       return parseInt(id) === parseInt(element.id);
     });
 
+    if(!objectInArray) return null
+
     // get rank
     let rank = 0;
     for (let i = 0; i < array.length; i++) {
@@ -34,7 +36,10 @@ module.exports = {
       }
     }
 
-    let index = array.findIndex((a) => a.point === objectInArray.point)
+    let index = array.findIndex((a) => {
+      console.log(a)
+      parseFloat(a.point).toFixed(2) === parseFloat(objectInArray.point).toFixed(2)
+    })
     let count = [];
     for(let i = index ; i < array.length; i++) {
       if(array[i].point != objectInArray.point) break;

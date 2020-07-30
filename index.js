@@ -150,5 +150,7 @@ app.listen(port, () => {
 
 // callRequest(// 3117150092, 99); // gdth k17 hk2 2020
 
+// callRequest(// 3117380376, 376); // Ngôn ngữ anh K17 HK2 2020 | nna_k17_hk2_2020
+
 // console.log(getMyRank(3.17));
 
