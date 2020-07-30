@@ -1,60 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>GET RANK 2020 K17 CNTT</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Indie+Flower|Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <script src="script.js"></script>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>GET RANK 2020 K17 CNTT</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+  <script src="script.js"></script>
+</head>
+
+<body
+  style="background-image: url('https://i.pinimg.com/originals/29/04/08/2904084efb988b40bea550196067fe18.gif'); background-repeat: no-repeat; background-attachment: fixed;background-size: cover;">
+  <div class="container wrap">
     <div id="title">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/"><span>R</span>am4GB</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Trang chủ <span class="sr-only">(current)</span></a
-              >
+              <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about-me">Về tôi</a>
@@ -63,57 +45,55 @@
         </div>
       </nav>
     </div>
-    <div id="content">
-      <h3>Mã sinh viên</h3>
-      <form method="POST" action="/">
-        <input
-          name="id"
-          placeholder="Điền mã sinh viên đây"
-          id="id"
-          type="text"
-          autocomplete="off"
-        />
-        <button id="submit-button">Search</button>
-      </form>
-      <p>
-        Bạn điền mã số sinh viên khoa công nghệ thông tin K17 vào để tra ra hạng
-        của mình nhé.
-      </p>
-      <p>Vd như: 3117410001</p>
-      <% if(success==true){ %>
-      <div class="alert alert-success" role="alert">
-        <div>
-          <span style="font-weight: bold;">MSV:</span>
-          <a
-            target="_blank"
-            href="http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=<%= data.id %>"
-            ><%= data.id %></a
-          >
+    <div id="wrap-main">
+      <div id="content">
+        <h3>Tìm hạng sinh viên</h3>
+        <form method="POST" action="/">
+          <input name="id" placeholder="Điền mã sinh viên đây" id="id" type="text" autocomplete="off" />
+          <button id="submit-button">Nhấn để tìm</button>
+        </form>
+        <p>
+          Bạn điền mã số sinh viên khoa công nghệ thông tin K17 vào để tra ra hạng
+          của mình nhé.
+        </p>
+        <p>Vd như: <strong>3117410001</strong></p>
+        <% if(success==true){ %>
+        <div class="alert alert-success" role="alert">
+          <div>
+            <span style="font-weight: bold;">MSV:</span>
+            <a target="_blank"
+              href="http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=<%= data.id %>"><%= data.id %></a>
+          </div>
+          <div>
+            <span style="font-weight: bold;">Hạng:</span> <%= data.rank %> / <%=
+              data.total %>
+          </div>
+          <div>
+            <span style="font-weight: bold;">Điểm hệ 4:</span> <%= data.point %>
+          </div>
         </div>
-        <div>
-          <span style="font-weight: bold;">Hạng:</span> <%= data.rank %> / <%=
-          data.total %>
+        <% } %> <% if(success==false){ %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
         </div>
-        <div>
-          <span style="font-weight: bold;">Điểm hệ 4:</span> <%= data.point %>
-        </div>
+        <% } %>
       </div>
-      <% } %> <% if(success==false){ %>
-      <div class="alert alert-danger" role="alert">
-        <%= error %>
+      <div id="about-me">
+        <img src="./avata.jpg" alt="" />
+        <h3>Ram4GB</h3>
+        <p>
+          Chào! Mình là Ram4GB. Mình là sinh viên của trường DHSG K17. Mình rất
+          vui khi bạn hài lòng app của mình. Cảm ơn các bạn
+        </p>
       </div>
-      <% } %>
-    </div>
-    <div id="about-me">
-      <img src="./8323936425_137d023a0f.jpg" alt="" />
-      <h3>Ram4GB</h3>
-      <p>
-        Chào! Mình là Ram4GB. Mình là sinh viên của trường DHSG K17. Mình rất
-        vui khi bạn hài lòng app của mình. Cảm ơn các bạn
-      </p>
     </div>
     <footer>
       Copyright &copy Ram4GB 2020 ❤️
     </footer>
-  </body>
+    <audio controls autoplay loop style="display:block;margin: auto;" >
+      <source type="audio/mp3" src="./NhacThienNhien-Hoatau_pxf6.mp3" />
+    </audio>
+  </div>
+</body>
+
 </html>
