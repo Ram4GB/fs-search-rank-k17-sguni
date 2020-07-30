@@ -42,7 +42,7 @@ module.exports = {
 
     let count = [];
 
-    if(index) {
+    if(index !== -1) {
       for(let i = index ; i < array.length; i++) {
         if(parseFloat(array[i].point).toFixed(2) !== parseFloat(objectInArray.point).toFixed(2)) break;
         else {
