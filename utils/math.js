@@ -28,28 +28,24 @@ module.exports = {
     if(!objectInArray) return null
 
     // get rank
-    let rank = 0;
-    for (let i = 0; i < array.length; i++) {
-      if (parseInt(id) === parseInt(array[i].id)) {
-        rank = i;
-        break;
-      }
-    }
+    
+    // let rank = 0;
+    // for (let i = 0; i < array.length; i++) {
+    //   if (parseInt(id) === parseInt(array[i].id)) {
+    //     rank = i;
+    //     break;
+    //   }
+    // }
 
-    console.log(objectInArray.point)
 
+    // get rank 
     let index = array.findIndex((m) => {
       return m.point == objectInArray.point
     })
 
-
     let count = [];
 
-    console.log(index)
-
     if(index !== -1) {
-
-      console.log(index)
       for(let i = index ; i < array.length; i++) {
         if(array[i].point !== objectInArray.point) break;
         else {
@@ -59,7 +55,7 @@ module.exports = {
     }
     
     if (objectInArray)
-      return { ...objectInArray, rank: rank + 1, total: array.length, count };
+      return { ...objectInArray, rank: index, total: array.length, count };
     return null;
   },
   callRequest: async (firstID, totalStudent, fileName) => {

@@ -71,7 +71,7 @@
               href="http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=<%= data.id %>"><%= data.id %></a>
           </div>
           <div>
-            <span style="font-weight: bold;">Hạng:</span> <%= data.rank %> / <%=
+            <span style="font-weight: bold;">Hạng:</span> <%= data.rank + 1 %> / <%=
               data.total %>
           </div>
           <div>
@@ -86,11 +86,16 @@
           <div>
             <span style="font-weight: bold;">Số tính chỉ:</span> <%= data.session %>
           </div>
-          <div>
-            <span style="font-weight: bold;">Có bao người đồng vị trí điểm với bạn:</span> <% data.count.forEach(function(e) { %>
-                  <%= e.id %>
-            <% }) %>
-          </div>
+          <% if(data.count.length > 0) { %>
+            <div>
+              <span style="font-weight: bold;">Những người đồng vị trí hạng <%= data.rank %> với bạn, hạng của bạn có thể nằm trong khoảng <%= data.rank %> - <%= parseInt(data.rank) + parseInt(data.count.length) + 1 %>: </span> <% data.count.forEach(function(e) { %>
+                    <%= e.id %> |
+              <% }) %>
+            </div>
+          <% } %>
+          <% if(data.count.length > 0) { %>
+            <div><span style="font-weight: bold;">=> 😉 Nếu hạng của bạn bị trùng với người khác thì dựa tiếp vào các chỉ số khác để xét hạng tiếp nhé (điểm tích lũy hệ 4, hệ 10,...)</span></div>
+          <% } %>
         </div>
         <% } %> <% if(success==false){ %>
         <div class="alert alert-danger" role="alert">
@@ -110,7 +115,7 @@
     <footer>
       Copyright &copy Ram4GB 2020 ❤️
     </footer>
-    <audio controls loop style="display:block;margin: auto;" >
+    <audio controls  loop style="display:block;margin: auto;" >
       <source type="audio/mp3" src="./NhacThienNhien-Hoatau_pxf6.mp3" />
     </audio>
   </div>
