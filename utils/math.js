@@ -36,15 +36,22 @@ module.exports = {
       }
     }
 
-    let index = array.findIndex((a) => {
-      parseFloat(a.point).toFixed(2) === parseFloat(objectInArray.point).toFixed(2)
+    console.log(objectInArray.point)
+
+    let index = array.findIndex((m) => {
+      return m.point == objectInArray.point
     })
+
 
     let count = [];
 
+    console.log(index)
+
     if(index !== -1) {
+
+      console.log(index)
       for(let i = index ; i < array.length; i++) {
-        if(parseFloat(array[i].point).toFixed(2) !== parseFloat(objectInArray.point).toFixed(2)) break;
+        if(array[i].point !== objectInArray.point) break;
         else {
           if(parseInt(array[i].id) !== parseInt(id)) count.push(array[i])
         }
