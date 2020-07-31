@@ -153,25 +153,21 @@ app.get("/list-request", (req, res) => {
 app.listen(port, () => {
   console.log(`Server open port ${port}`);
   // khi start server thì chạy schedule liền
-  schedule.scheduleJob({ hour: 0, minute: 7 }, function () {
-    console.log("Lets check some schedule");
-    let data = fs.readFileSync("./data/schedule.json");
-    data = JSON.parse(data);
-    let arr = [];
-    for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
-    if (arr.length > 0)
-      Promise.all(arr)
-        .then((data) => console.log(data))
-        .catch((e) => console.log(e));
-    fs.writeFile(
-      "./data/schedule.json",
-      JSON.stringify([]),
-      { encoding: "utf8" },
-      function (error) {
-        console.log(error);
-      }
-    );
-  });
+  
+  // schedule.scheduleJob({ hour: 0, minute: 58 }, async function () {
+  //   console.log("Lets check some schedule");
+  //   let data = fs.readFileSync("./data/schedule.json");
+  //   data = JSON.parse(data);
+  //   let arr = [];
+  //   console.log(data)
+  //   for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
+  //   if (arr.length > 0) {
+  //     await Promise.all(arr)
+  //       .then((data) => console.log(data))
+  //       .catch((e) => console.log(e));
+  //     fs.writeFileSync("./data/schedule.json", JSON.stringify([]));
+  //   }
+  // });
 });
 
 // callRequest(3117410001, 312); // cntt k17 hk2 2020

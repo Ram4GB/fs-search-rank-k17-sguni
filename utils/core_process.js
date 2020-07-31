@@ -13,11 +13,9 @@ module.exports = {
       data = JSON.parse(data);
       data.push({ name, value });
       fs.writeFileSync("./data/faculty.json", JSON.stringify(data));
+      return Promise.resolve()
     } catch (error) {
-      return res.send({
-        success: false,
-        data: "Server error",
-      });
+      return Promise.reject('Fail')
     }
   },
 };

@@ -1,7 +1,7 @@
 const fs = require("fs");
 const rp = require("request-promise");
 const cheerio = require("cheerio");
-const _ = require('lodash') 
+const _ = require("lodash");
 
 module.exports = {
   getMyRank: (id, faculty) => {
@@ -25,10 +25,10 @@ module.exports = {
       return parseInt(id) === parseInt(element.id);
     });
 
-    if(!objectInArray) return null
+    if (!objectInArray) return null;
 
     // get rank
-    
+
     // let rank = 0;
     // for (let i = 0; i < array.length; i++) {
     //   if (parseInt(id) === parseInt(array[i].id)) {
@@ -37,23 +37,22 @@ module.exports = {
     //   }
     // }
 
-
-    // get rank 
+    // get rank
     let index = array.findIndex((m) => {
-      return m.point == objectInArray.point
-    })
+      return m.point == objectInArray.point;
+    });
 
     let count = [];
 
-    if(index !== -1) {
-      for(let i = index ; i < array.length; i++) {
-        if(array[i].point !== objectInArray.point) break;
+    if (index !== -1) {
+      for (let i = index; i < array.length; i++) {
+        if (array[i].point !== objectInArray.point) break;
         else {
-          if(parseInt(array[i].id) !== parseInt(id)) count.push(array[i])
+          if (parseInt(array[i].id) !== parseInt(id)) count.push(array[i]);
         }
       }
     }
-    
+
     if (objectInArray)
       return { ...objectInArray, rank: index, total: array.length, count };
     return null;
@@ -63,7 +62,6 @@ module.exports = {
     let array = [];
     try {
       for (let i = firstID; i <= total; i++) {
-        console.log(i)
         await rp({
           url: `http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=${i}`,
           method: "GET",
@@ -100,18 +98,15 @@ module.exports = {
           })
           .catch((e) => console.log(i, e));
       }
-      fs.writeFile(
+      await fs.writeFileSync(
         fileName
           ? `./data/${fileName}.json`
           : `./data/${new Date().getFullYear()}.json`,
-        JSON.stringify(array),
-        function (err) {
-          if (err) console.log(err);
-          console.log("Write file successfully");
-        }
+        JSON.stringify(array)
       );
+      return Promise.resolve('Done');
     } catch (error) {
-      console.log(error);
+      return Promise.reject('Fail')
     }
   },
 };
