@@ -60,11 +60,10 @@ module.exports = {
   },
   callRequest: async (firstID, totalStudent, fileName) => {
     const total = firstID + totalStudent - 1;
-    console.log(total);
-
     let array = [];
     try {
       for (let i = firstID; i <= total; i++) {
+        console.log(i)
         await rp({
           url: `http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=${i}`,
           method: "GET",

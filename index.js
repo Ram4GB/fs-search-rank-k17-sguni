@@ -1,10 +1,14 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const { getMyRank, callRequest } = require("./utils/math");
+const { getMyRank } = require("./utils/math");
+const { algorithm } = require("./utils/core_process");
 const port = process.env.PORT || 8080;
+const cors = require("cors");
+var schedule = require("node-schedule");
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -39,8 +43,6 @@ app.get("/", (req, res) => {
 // Process a request send to the server
 app.post("/", (req, res) => {
   let { id } = req.body;
-
-  console.log(req.body.faculty);
 
   if (!id)
     return res.render("index", {
@@ -91,13 +93,13 @@ app.post("/", (req, res) => {
 });
 
 // Warning: Crawl a data again
-app.get("/refresh-data", async (req, res) => {
-  const { username, password, firstId, total, name, value } = req.query;
+app.post("/refresh-data", async (req, res) => {
+  const { username, password, firstId, total, name, value } = req.body;
 
   if (!username || !password || !firstId || !total || !name || !value)
     return res.send({
       success: false,
-      data:
+      error:
         "username, password, firstId, total, value: cntt_k17_hk[x: number]_[year: number], name: Công nghệ thông tin K17 HK2",
       link:
         "refresh-data?username=123&password=123&firstId=3117410027&name=cntt_k17_hk3_2019&value=Cong%20nghe%20thong%20tin%20k17%20hk%203&3&total=3",
@@ -106,45 +108,70 @@ app.get("/refresh-data", async (req, res) => {
   if (username !== "admin" && password != "admin")
     return res.send({
       success: false,
-      data: "Opssss, Username or password not match",
+      error: "Opssss, Username or password not match",
     });
 
   if (isNaN(firstId))
     return res.send({
       success: false,
-      data: "firstId must be a number",
+      error: "firstId must be a number",
     });
 
   if (isNaN(total))
     return res.send({
       success: false,
-      data: "total must be a number",
+      error: "total must be a number",
     });
+
+  let data = fs.readFileSync("./data/schedule.json");
+
+  data = JSON.parse(data);
+  data.push({
+    firstId,
+    total,
+    name,
+    value,
+  });
+  fs.writeFileSync("./data/schedule.json", JSON.stringify(data));
 
   res.send({
     success: true,
-    data: "Wait from 15mins to 30mins to get your result. Thanks",
+    error: "Schedule was set",
   });
+});
 
-  // create new file in data
-  await callRequest(parseInt(firstId), parseInt(total), value);
+app.get("/list-request", (req, res) => {
+  let data = fs.readFileSync("./data/schedule.json");
+  data = JSON.parse(data);
 
-  // create new faculty
-  try {
-    let data = fs.readFileSync("./data/faculty.json");
-    data = JSON.parse(data);
-    data.push({ name, value });
-    fs.writeFileSync("./data/faculty.json", JSON.stringify(data));
-  } catch (error) {
-    return res.send({
-      success: false,
-      data: "Server error",
-    });
-  }
+  res.render("new-request", {
+    success: true,
+    data,
+  });
 });
 
 app.listen(port, () => {
   console.log(`Server open port ${port}`);
+  // khi start server thì chạy schedule liền
+  schedule.scheduleJob({ hour: 0, minute: 30 }, function () {
+    console.log("Lets check some schedule");
+    let data = fs.readFileSync("./data/schedule.json");
+    data = JSON.parse(data);
+    let arr = [];
+    for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
+    if (arr.length > 0)
+      Promise.all(arr)
+        .then((data) => console.log(data))
+        .catch((e) => console.log(e));
+    fs.writeFile(
+      "./data/schedule.json",
+      JSON.stringify([]),
+      { encoding: "utf8" },
+      function (error) {
+        console.log(error);
+      }
+    );
+  });
 });
 
 // callRequest(3117410001, 312); // cntt k17 hk2 2020

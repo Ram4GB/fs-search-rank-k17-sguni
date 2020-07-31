@@ -3,9 +3,8 @@
     "name": "Công nghệ thông tin K17 - HK2 - 2020",
     "value": "cntt_k17_hk2_2020"
   },
-  { "name": "Kế toán tài chính  K17- HK2-2020", "value": "kt_tc_hk2_2020" },
-  { "name": "Giáo dục tiểu học K17- HK2-2020", "value": "gdth_hk2_2020" },
-  { "name": "Giáo dục tiểu học K17- HK2-2020", "value": "gdth_hk2_2020" },
-  { "name": "Ngôn ngữ anh K17 HK2 2020", "value": "nna_k17_hk2_2020" },
-  { "name": "Toán ứng dụng  K17 HK2 2020", "value": "tud_k17_hk2_2020" }
+  { "name": "Ngành Kế toán K17- HK2-2020", "value": "nganh_kt_hk2_2020" },
+  { "name": "Ngành Giáo dục tiểu học K17- HK2-2020", "value": "nganh_gdth_hk2_2020" },
+  { "name": "Ngành ngôn ngữ anh K17 HK2 2020", "value": "nganh_nna_k17_hk2_2020" },
+  { "name": "Ngành sư phạm toán  K17 HK2 2020", "value": "nganh_sp_toan_k17_hk2_2020" }
 ]
