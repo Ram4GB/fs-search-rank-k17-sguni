@@ -153,7 +153,7 @@ app.get("/list-request", (req, res) => {
 app.listen(port, () => {
   console.log(`Server open port ${port}`);
   // khi start server thì chạy schedule liền
-  schedule.scheduleJob({ hour: 0, minute: 30 }, function () {
+  schedule.scheduleJob({ hour: 0, minute: 7 }, function () {
     console.log("Lets check some schedule");
     let data = fs.readFileSync("./data/schedule.json");
     data = JSON.parse(data);
