@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   let { id } = req.body;
 
-  console.log(req.body.faculty)
+  console.log(req.body.faculty);
 
   if (!id)
     return res.render("index", {
@@ -121,6 +121,11 @@ app.get("/refresh-data", async (req, res) => {
       data: "total must be a number",
     });
 
+  res.send({
+    success: true,
+    data: "Wait from 15mins to 30mins to get your result. Thanks",
+  });
+
   // create new file in data
   await callRequest(parseInt(firstId), parseInt(total), value);
 
@@ -129,18 +134,13 @@ app.get("/refresh-data", async (req, res) => {
     let data = fs.readFileSync("./data/faculty.json");
     data = JSON.parse(data);
     data.push({ name, value });
-    fs.writeFileSync('./data/faculty.json', JSON.stringify(data))
+    fs.writeFileSync("./data/faculty.json", JSON.stringify(data));
   } catch (error) {
     return res.send({
       success: false,
       data: "Server error",
     });
   }
-
-  res.send({
-    success: true,
-    data: "Update new data",
-  });
 });
 
 app.listen(port, () => {
@@ -156,4 +156,3 @@ app.listen(port, () => {
 // callRequest(// 3117380376, 376); // Ngôn ngữ anh K17 HK2 2020 | nna_k17_hk2_2020
 
 // console.log(getMyRank(3.17));
-
