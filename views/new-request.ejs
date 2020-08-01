@@ -23,6 +23,18 @@
   <body>
     <div class="container p-3">
       <h3>Form yêu cầu lấy dữ liệu khoa</h3>
+      <a href="/">👉 Ủa gì lạ quá hả. Thôi quay lại trang chủ hen.</a>
+      <div class="alert alert-primary" role="alert">
+        😃 Nếu bạn muốn tự mình gửi yêu cầu thì có thể liên hệ với mình. Hiện tại mình giữ mật khẩu để tạo yêu cầu ý.
+      </div>
+      <div class="alert alert-primary" role="alert">
+        😃 Tất cả dữ liệu trong bảng dưới đây sẽ được xử lý vào lúc 00:01 tối mỗi ngày một cách tự động. Vậy nên hãy xem vào lúc ngày hôm sau nhé.
+      </div>
+      <div class="alert alert-primary" role="alert">
+        🙌 Chúc bạn 1 ngày tốt lành. 🥂 
+      </div>
+      <a target="_blank" href="https://www.facebook.com/profile.php?id=100010765894081">👉 Link Facebook của mình. Không có độc hại gì đâu. ^^</a>
+      <a href="https://askme.love/tontrungson5532?fsid=1596283714979&fbclid=IwAR0RmORLsZxFmkGs-wZee00lUprXc89PPWMT2FxEPxnzDENwIfSzn8fpOG4">👉 Ngại thì ask ẩn danh cũng được</a>
       <form>
         <input
           id="username"
@@ -30,12 +42,13 @@
           type="text"
           name="username"
           value="admin"
+          disabled
         />
         <input
           id="password"
           placeholder="Mời bạn điền password"
           type="password"
-          value="admin"
+          value=""
           name="password"
         />
         <input
@@ -69,26 +82,29 @@
         <button id="submit" type="button" onclick="submitFunc()">Gửi đi</button>
       </form>
 
-      <table class="table mt-5">
-        <tr>
-          <th>Tên file</th>
-          <th>Filepath</th>
-          <th>Mã đầu tiên</th>
-          <th>Tổng sinh viên</th>
-          <th>Thời gian lấy dữ liệu</th>
-        </tr>
-        <% data.forEach(function(item){ %>
-
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= item.value %></td>
-          <td><%= item.firstId %></td>
-          <td><%= item.total %></td>
-          <td><strong style="color: red;">0h07</strong></td>
-        </tr>
-
-        <% }) %>
-      </table>
+      <div style="overflow-y: scroll;">
+        <table class="table mt-5">
+          <tr>
+            <th>Tên file</th>
+            <th>Filepath</th>
+            <th>Mã đầu tiên</th>
+            <th>Tổng sinh viên</th>
+            <th>Gửi yêu câu vào lúc</th>
+          </tr>
+          <% data.forEach(function(item){ %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.value %></td>
+            <td><%= item.firstId %></td>
+            <td><%= item.total %></td>
+            <td>
+              <strong style="color: red;font-weight: boldz;"><%= item.datetimeRequest %></strong>
+            </td>
+          </tr>
+  
+          <% }) %>
+        </table>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
