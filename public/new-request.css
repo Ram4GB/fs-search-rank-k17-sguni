@@ -11,11 +11,21 @@ form {
     margin: 10px 0px;
 }
 
+a {
+    margin-bottom: 10px;
+    display: block;
+}
+
 form input {
     width: 100%;
     margin-bottom: 5px;
+    padding: 10px 7px;
 }
 
 form button {
     width: 100%;
+}
+
+button {
+    padding: 10px 7px;
 }

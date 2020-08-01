@@ -17,7 +17,7 @@ const submitFunc = async () => {
         firstId: firstId.value,
         total: total.value,
         name: name.value,
-        value: value.value,
+        value: value.value
       },
     });
 

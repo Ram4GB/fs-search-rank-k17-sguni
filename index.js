@@ -7,6 +7,8 @@ const port = process.env.PORT || 8080;
 const cors = require("cors");
 var schedule = require("node-schedule");
 const util = require("util");
+const dayjs = require('dayjs');
+const uuid = require('uuid');
 
 app.use(express.json());
 app.use(cors());
@@ -15,26 +17,8 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
 
-const test = async () => {
-  console.log("Lets check some schedule");
-  let data = fs.readFileSync("./data/schedule.json");
-  data = JSON.parse(data);
-  let arr = [];
-  for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
-  if (arr.length > 0) {
-    try {
-      const result = await Promise.all(arr);
-      console.log(util.inspect(result, false, null, true /* enable colors */));
-    } catch (error) {
-      console.log(error);
-    }
-    fs.writeFileSync("./data/schedule.json", JSON.stringify([]));
-  }
-}
-
-test();
-
-schedule.scheduleJob({ hour: 17, minute: 33 }, async function () {
+/** Run every 15 minutes */
+schedule.scheduleJob({ hour: 0, minute: 1 }, async function(){
   console.log("Lets check some schedule");
   let data = fs.readFileSync("./data/schedule.json");
   data = JSON.parse(data);
@@ -131,18 +115,18 @@ app.post("/", (req, res) => {
 
 // Warning: Crawl a data again
 app.post("/refresh-data", async (req, res) => {
-  const { username, password, firstId, total, name, value } = req.body;
+  const { username, password, firstId, total, name, value, datetimeRequest } = req.body;
 
   if (!username || !password || !firstId || !total || !name || !value)
     return res.send({
       success: false,
       error:
-        "username, password, firstId, total, value: cntt_k17_hk[x: number]_[year: number], name: Công nghệ thông tin K17 HK2",
+        "username, password, firstId, total, value: cntt_k17_hk[x: number]_[year: number], name: Công nghệ thông tin K17 HK2 ,datetimeRequest: new Date()",
       link:
         "refresh-data?username=123&password=123&firstId=3117410027&name=cntt_k17_hk3_2019&value=Cong%20nghe%20thong%20tin%20k17%20hk%203&3&total=3",
     });
 
-  if (username !== "admin" && password != "admin")
+  if (username !== "admin" && password != "123")
     return res.send({
       success: false,
       error: "Opssss, Username or password not match",
@@ -168,6 +152,8 @@ app.post("/refresh-data", async (req, res) => {
     total,
     name,
     value,
+    datetimeRequest: `${dayjs().format('DD/MM/YYYY | HH:mm:a')}`,
+    id: uuid.v4()
   });
   fs.writeFileSync("./data/schedule.json", JSON.stringify(data));
 
