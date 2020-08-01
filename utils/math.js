@@ -2,6 +2,9 @@ const fs = require("fs");
 const rp = require("request-promise");
 const cheerio = require("cheerio");
 const _ = require("lodash");
+const { request } = require("http");
+const util = require("util");
+
 
 module.exports = {
   getMyRank: (id, faculty) => {
@@ -60,53 +63,65 @@ module.exports = {
   callRequest: async (firstID, totalStudent, fileName) => {
     const total = firstID + totalStudent - 1;
     let array = [];
+    let requests = [];
     try {
       for (let i = firstID; i <= total; i++) {
-        await rp({
-          url: `http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=${i}`,
-          method: "GET",
-        })
-          .then((body) => {
-            let $ = cheerio.load(body);
-
-            // điểm học kì này
-            let point = $(".row-diemTK .Label").eq(3).text();
-
-            let point_contribution_lv10 = $(".row-diemTK .Label").eq(1).text();
-
-            let point_contribution_lv4 = $(".row-diemTK .Label").eq(7).text();
-
-            let session = $(".row-diemTK .Label").eq(11).text();
-
-            if (point)
-              array.push({
-                id: i,
-                point,
-                point_contribution_lv10,
-                point_contribution_lv4,
-                session,
-              });
-            else
-              array.push({
-                id: i,
-                point: "0.00",
-                point_contribution_lv10: "0.00",
-                point_contribution_lv4: "0.00",
-                session: 0,
-              });
-            console.log(`${i} :`, point);
-          })
-          .catch((e) => console.log(i, e));
+        requests.push(createSingleStudentInfo(i));
       }
-      await fs.writeFileSync(
+
+      array = await Promise.all(requests);
+      console.log(util.inspect(array, false, null, true /* enable colors */));
+
+      fs.writeFile(
         fileName
           ? `./data/${fileName}.json`
           : `./data/${new Date().getFullYear()}.json`,
-        JSON.stringify(array)
+        JSON.stringify(array),
+        function (err) {
+          console.log("Done ", err);
+        }
       );
-      return Promise.resolve('Done');
     } catch (error) {
-      return Promise.reject('Fail')
+      console.log(error);
     }
   },
+};
+
+const createSingleStudentInfo = async (id) => {
+  try {
+    const body = await rp({
+      url: `http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=${id}`,
+      method: "GET",
+    });
+
+    let $ = cheerio.load(body);
+
+    // điểm học kì này
+    let point = $(".row-diemTK .Label").eq(3).text();
+
+    let point_contribution_lv10 = $(".row-diemTK .Label").eq(1).text();
+
+    let point_contribution_lv4 = $(".row-diemTK .Label").eq(7).text();
+
+    let session = $(".row-diemTK .Label").eq(11).text();
+
+    console.log(`create single student info method id: ${id}`);
+    if (point)
+      return {
+        id,
+        point,
+        point_contribution_lv10,
+        point_contribution_lv4,
+        session,
+      };
+    return {
+      id,
+      point: "0.00",
+      point_contribution_lv10: "0.00",
+      point_contribution_lv4: "0.00",
+      session: 0,
+    };
+  } catch (error) {
+    console.log(`create single student info: ${error}`);
+  }
 };

@@ -6,6 +6,7 @@ const { algorithm } = require("./utils/core_process");
 const port = process.env.PORT || 8080;
 const cors = require("cors");
 var schedule = require("node-schedule");
+const util = require("util");
 
 app.use(express.json());
 app.use(cors());
@@ -13,6 +14,42 @@ app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
+
+const test = async () => {
+  console.log("Lets check some schedule");
+  let data = fs.readFileSync("./data/schedule.json");
+  data = JSON.parse(data);
+  let arr = [];
+  for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
+  if (arr.length > 0) {
+    try {
+      const result = await Promise.all(arr);
+      console.log(util.inspect(result, false, null, true /* enable colors */));
+    } catch (error) {
+      console.log(error);
+    }
+    fs.writeFileSync("./data/schedule.json", JSON.stringify([]));
+  }
+}
+
+test();
+
+schedule.scheduleJob({ hour: 17, minute: 33 }, async function () {
+  console.log("Lets check some schedule");
+  let data = fs.readFileSync("./data/schedule.json");
+  data = JSON.parse(data);
+  let arr = [];
+  for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
+  if (arr.length > 0) {
+    try {
+      const result = await Promise.all(arr);
+      console.log(util.inspect(result, false, null, true /* enable colors */));
+    } catch (error) {
+      console.log(error);
+    }
+    fs.writeFileSync("./data/schedule.json", JSON.stringify([]));
+  }
+});
 
 const getListFaculty = (req, res, next) => {
   try {
@@ -153,21 +190,6 @@ app.get("/list-request", (req, res) => {
 app.listen(port, () => {
   console.log(`Server open port ${port}`);
   // khi start server thì chạy schedule liền
-  
-  // schedule.scheduleJob({ hour: 0, minute: 58 }, async function () {
-  //   console.log("Lets check some schedule");
-  //   let data = fs.readFileSync("./data/schedule.json");
-  //   data = JSON.parse(data);
-  //   let arr = [];
-  //   console.log(data)
-  //   for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
-  //   if (arr.length > 0) {
-  //     await Promise.all(arr)
-  //       .then((data) => console.log(data))
-  //       .catch((e) => console.log(e));
-  //     fs.writeFileSync("./data/schedule.json", JSON.stringify([]));
-  //   }
-  // });
 });
 
 // callRequest(3117410001, 312); // cntt k17 hk2 2020

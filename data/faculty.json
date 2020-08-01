@@ -1,10 +1,1 @@
-[
-  {
-    "name": "Công nghệ thông tin K17 - HK2 - 2020",
-    "value": "cntt_k17_hk2_2020"
-  },
-  { "name": "Ngành Kế toán K17- HK2-2020", "value": "nganh_kt_hk2_2020" },
-  { "name": "Ngành Giáo dục tiểu học K17- HK2-2020", "value": "nganh_gdth_hk2_2020" },
-  { "name": "Ngành ngôn ngữ anh K17 HK2 2020", "value": "nganh_nna_k17_hk2_2020" },
-  { "name": "Ngành sư phạm toán  K17 HK2 2020", "value": "nganh_sp_toan_k17_hk2_2020" }
-]
+[{"name":"Công nghệ thông tin K17 - HK2 - 2020","value":"cntt_k17_hk2_2020"},{"name":"Ngành Kế toán K17- HK2-2020","value":"nganh_kt_hk2_2020"},{"name":"Ngành Giáo dục tiểu học K17- HK2-2020","value":"nganh_gdth_hk2_2020"},{"name":"Ngành ngôn ngữ anh K17 HK2 2020","value":"nganh_nna_k17_hk2_2020"},{"name":"Ngành sư phạm toán  K17 HK2 2020","value":"nganh_sp_toan_k17_hk2_2020"},{"name":"Ngành Tài chính - Ngân hàng HK2 2020","value":"nganh_tcnh_k17_hk2_2020"},{"name":"Ngành  SP Tiếng Anh HK2 2020","value":"nganh_spta_k17_hk2_2020"}]
