@@ -19,7 +19,7 @@ module.exports = {
     array = array
       .sort(
         (a, b) =>
-          parseFloat(a.point).toFixed(2) - parseFloat(b.point).toFixed(2)
+          parseFloat(a.point_contribution_lv10).toFixed(2) - parseFloat(b.point_contribution_lv10).toFixed(2)
       )
       .reverse();
 
@@ -42,14 +42,14 @@ module.exports = {
 
     // get rank
     let index = array.findIndex((m) => {
-      return m.point == objectInArray.point;
+      return m.point_contribution_lv10 == objectInArray.point_contribution_lv10;
     });
 
     let count = [];
 
     if (index !== -1) {
       for (let i = index; i < array.length; i++) {
-        if (array[i].point !== objectInArray.point) break;
+        if (array[i].point_contribution_lv10 !== objectInArray.point_contribution_lv10) break;
         else {
           if (parseInt(array[i].id) !== parseInt(id)) count.push(array[i]);
         }
