@@ -19,7 +19,7 @@ module.exports = {
     array = array
       .sort(
         (a, b) =>
-          parseFloat(a.point_contribution_lv10).toFixed(2) - parseFloat(b.point_contribution_lv10).toFixed(2)
+          parseFloat(a.point_lv10).toFixed(2) - parseFloat(b.point_lv10).toFixed(2)
       )
       .reverse();
 
@@ -42,14 +42,14 @@ module.exports = {
 
     // get rank
     let index = array.findIndex((m) => {
-      return m.point_contribution_lv10 == objectInArray.point_contribution_lv10;
+      return m.point_lv10 == objectInArray.point_lv10;
     });
 
     let count = [];
 
     if (index !== -1) {
       for (let i = index; i < array.length; i++) {
-        if (array[i].point_contribution_lv10 !== objectInArray.point_contribution_lv10) break;
+        if (array[i].point_lv10 !== objectInArray.point_lv10) break;
         else {
           if (parseInt(array[i].id) !== parseInt(id)) count.push(array[i]);
         }
@@ -97,9 +97,9 @@ const createSingleStudentInfo = async (id) => {
     let $ = cheerio.load(body);
 
     // điểm học kì này
+    let point_lv10 = $(".row-diemTK .Label").eq(1).text();
+    
     let point = $(".row-diemTK .Label").eq(3).text();
-
-    let point_contribution_lv10 = $(".row-diemTK .Label").eq(1).text();
 
     let point_contribution_lv4 = $(".row-diemTK .Label").eq(7).text();
 
@@ -110,14 +110,14 @@ const createSingleStudentInfo = async (id) => {
       return {
         id,
         point,
-        point_contribution_lv10,
+        point_lv10,
         point_contribution_lv4,
         session,
       };
     return {
       id,
       point: "0.00",
-      point_contribution_lv10: "0.00",
+      point_lv10: "0.00",
       point_contribution_lv4: "0.00",
       session: 0,
     };
