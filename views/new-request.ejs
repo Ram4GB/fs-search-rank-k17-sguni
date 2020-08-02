@@ -25,18 +25,27 @@
       <h3>Form yêu cầu lấy dữ liệu khoa</h3>
       <a href="/">👉 Ủa gì lạ quá hả. Thôi quay lại trang chủ hen.</a>
       <div class="alert alert-primary" role="alert">
-        😃 Nếu bạn muốn tự mình gửi yêu cầu thì có thể liên hệ với mình. Hiện tại mình giữ mật khẩu để tạo yêu cầu ý.
+        😃 Nếu bạn muốn tự mình gửi yêu cầu thì có thể liên hệ với mình. Hiện
+        tại mình giữ mật khẩu để tạo yêu cầu ý.
       </div>
       <div class="alert alert-primary" role="alert">
-        😃 Tất cả dữ liệu trong bảng dưới đây sẽ được xử lý vào lúc 00:01 tối mỗi ngày một cách tự động. Vậy nên hãy xem vào lúc ngày hôm sau nhé.
+        😃 Tất cả dữ liệu trong bảng dưới đây sẽ được xử lý vào lúc 00:01 tối
+        mỗi ngày một cách tự động. Vậy nên hãy xem vào lúc ngày hôm sau nhé.
       </div>
       <div class="alert alert-primary" role="alert">
-        🙌 Chúc bạn 1 ngày tốt lành. 🥂 
+        🙌 Chúc bạn 1 ngày tốt lành. 🥂
       </div>
-      <a target="_blank" href="https://www.facebook.com/profile.php?id=100010765894081">👉 Link Facebook của mình. Không có độc hại gì đâu. ^^</a>
-      <a href="https://askme.love/tontrungson5532?fsid=1596283714979&fbclid=IwAR0RmORLsZxFmkGs-wZee00lUprXc89PPWMT2FxEPxnzDENwIfSzn8fpOG4">👉 Ngại thì ask ẩn danh cũng được</a>
+      <a
+        target="_blank"
+        href="https://www.facebook.com/profile.php?id=100010765894081"
+        >👉 Link Facebook của mình. Không có độc hại gì đâu. ^^</a
+      >
+      <a
+        href="https://askme.love/tontrungson5532?fsid=1596283714979&fbclid=IwAR0RmORLsZxFmkGs-wZee00lUprXc89PPWMT2FxEPxnzDENwIfSzn8fpOG4"
+        >👉 Ngại thì ask ẩn danh cũng được</a
+      >
       <form>
-        <input
+        <!-- <input
           id="username"
           placeholder="Mời bạn điền username"
           type="text"
@@ -50,7 +59,7 @@
           type="password"
           value=""
           name="password"
-        />
+        /> -->
         <input
           id="firstId"
           placeholder="Mời bạn điền firstId"
@@ -60,12 +69,195 @@
         />
         <input
           id="total"
-          placeholder="Mời bạn điền total"
+          placeholder="Mời bạn điền khoa bạn có nhiêu sinh viên"
           type="text"
-          value="1"
+          value=""
           name="total"
         />
-        <input
+        <select name="faculty" id="faculty"
+          ><option value="">--- [Chọn Ngành] ---</option
+          ><option value="_____">Chưa gán ngành</option
+          ><option value="CCM">Công nghệ Kĩ thuật Môi trường</option
+          ><option value="CCN">SP Kỹ thuật Công nghiệp</option
+          ><option value="CCT">Công nghệ thông tin</option
+          ><option value="CDI">SP Địa lý</option
+          ><option value="CGC">Giáo dục công dân</option
+          ><option value="CGM">Giáo dục Mầm non</option
+          ><option value="CGT">Giáo dục Tiểu học</option
+          ><option value="CHO">SP Hóa</option
+          ><option value="CKD">Công nghệ Kĩ thuật điện, điện tử</option
+          ><option value="CKE">Kế toán</option
+          ><option value="CKG">SP Kinh tế Gia đình</option
+          ><option value="CKM">Khoa học môi trường</option
+          ><option value="CKN">SP Kỹ thuật Nông nghiệp</option
+          ><option value="CKT">Công nghệ KT điện tử, truyền thông</option
+          ><option value="CKV">Khoa học Thư viện</option
+          ><option value="CLI">SP Vật lí</option
+          ><option value="CLT">Lưu trữ học</option
+          ><option value="CMI">SP Mỹ thuật</option
+          ><option value="CMT">Khoa học máy tính</option
+          ><option value="CNH">SP Âm nhạc</option
+          ><option value="CQK">Quản trị kinh doanh</option
+          ><option value="CQV">Quản trị văn phòng</option
+          ><option value="CSA">SP Tiếng Anh</option
+          ><option value="CSI">SP Sinh học</option
+          ><option value="CSP">SP Tiếng Pháp</option
+          ><option value="CSU">SP Lịch sử</option
+          ><option value="CTA">Tiếng Anh</option
+          ><option value="CTI">SP Tin</option
+          ><option value="CTK">Thư ký văn phòng</option
+          ><option value="CTN">Tài chính - Ngân hàng</option
+          ><option value="CTO">SP Toán</option
+          ><option value="CTV">Thư viện - Thông tin</option
+          ><option value="CVA">SP Ngữ văn</option
+          ><option value="CVI">Việt Nam học</option
+          ><option value="DAN">Ngôn ngữ Anh</option
+          ><option value="DCM">Công nghệ Kĩ thuật Môi trường</option
+          ><option value="DCM_CMXC"
+            >Công nghệ xử lí chất thải rắn và chất thải nguy hại</option
+          ><option value="DCM_CMXN">Công nghệ xử lí nước</option
+          ><option value="DCT">Công nghệ thông tin</option
+          ><option value="DCT_07HT">Hệ thống thông tin</option
+          ><option value="DCT_07MM">Mạng máy tính</option
+          ><option value="DCT_07PM">Kỹ thuật phần mềm</option
+          ><option value="DCT_CTHT">Hệ thống thông tin</option
+          ><option value="DCT_CTMM">Mạng máy tính</option
+          ><option value="DCT_CTPM">Kỹ thuật phần mềm</option
+          ><option value="DCV">Công nghệ kỹ thuật điện tử - viễn thông</option
+          ><option value="DDD">Kĩ thuật Điện, Điện tử</option
+          ><option value="DDD_DDDC">Kĩ thuật điện công nghiệp</option
+          ><option value="DDD_DDDI">Kỹ thuật điện</option
+          ><option value="DDD_DDDN">Kĩ thuật điện năng</option
+          ><option value="DDD_DDDT">Kỹ thuật điện tử</option
+          ><option value="DDD_DDMT">Kĩ thuật điện tử máy tính</option
+          ><option value="DDE">Kỹ thuật điện</option
+          ><option value="DDI">SP Địa lý</option
+          ><option value="DDI_DICS">đào tạo giáo viên THCS</option
+          ><option value="DDI_DIPT">đào tạo giáo viên THPT</option
+          ><option value="DDT">Kĩ thuật Điện tử, Truyền thông</option
+          ><option value="DDT_DTDT">Kĩ thuật điện tử</option
+          ><option value="DDT_DTTT">Kĩ thuật truyền thông</option
+          ><option value="DDV">Kỹ thuật điện tử - viễn thông</option
+          ><option value="DGC">SP Giáo dục công dân</option
+          ><option value="DGD">Giáo dục Chính trị</option
+          ><option value="DGD_GDCS">đào tạo giáo viên THCS</option
+          ><option value="DGD_GDPT">đào tạo giáo viên THPT</option
+          ><option value="DGM">Giáo dục Mầm non</option
+          ><option value="DGT">Giáo dục Tiểu học</option
+          ><option value="DHO">SP Hóa</option
+          ><option value="DHO_HOCS">đào tạo giáo viên THCS</option
+          ><option value="DHO_HOPT">đào tạo giáo viên THPT</option
+          ><option value="DKD">Công nghệ Kĩ thuật điện, điện tử</option
+          ><option value="DKD_KDDC">Công nghệ Kĩ thuật điện công nghiệp</option
+          ><option value="DKD_KDDI">Công nghệ kỹ thuật điện</option
+          ><option value="DKD_KDDN">Công nghệ Kĩ thuật điện năng</option
+          ><option value="DKD_KDDT">Công nghệ kỹ thuật điện tử</option
+          ><option value="DKD_KDMT">Công nghệ Kĩ thuật điện tử máy tính</option
+          ><option value="DKE">Kế toán</option
+          ><option value="DKH">Sư phạm Khoa học tự nhiên</option
+          ><option value="DKH_THCS">Đào tạo giáo viên THCS</option
+          ><option value="DKM">Khoa học môi trường</option
+          ><option value="DKM_KMKM">Khoa học môi trường</option
+          ><option value="DKM_KMQL">Quản lí môi trường và tài nguyên</option
+          ><option value="DKM_MTCN">Công nghệ môi trường</option
+          ><option value="DKM_MTQL">Quản lý môi trường</option
+          ><option value="DKP">Kỹ thuật phần mềm</option
+          ><option value="DKQ">Kinh doanh quốc tế</option
+          ><option value="DKT">Công nghệ KT điện tử, truyền thông</option
+          ><option value="DKT_KTDT">Công nghệ Kĩ thuật điện tử</option
+          ><option value="DKT_KTTT">Công nghệ Kĩ thuật truyền thông</option
+          ><option value="DKV">Khoa học Thư viện</option
+          ><option value="DLD">Sư phạm Lịch sử - Địa lý</option
+          ><option value="DLD_THCS">Đào tạo giáo viên THCS</option
+          ><option value="DLH">Luật</option
+          ><option value="DLI">SP Vật lí</option
+          ><option value="DLI_LICS">đào tạo giáo viên THCS</option
+          ><option value="DLI_LIPT">đào tạo giáo viên THPT</option
+          ><option value="DLK">Luật</option
+          ><option value="DLM">Luật</option
+          ><option value="DLU">Luật</option
+          ><option value="DLU_LUHC">Luật Hành chính</option
+          ><option value="DLU_LUKD">Luật Kinh doanh</option
+          ><option value="DLU_LUTM">Luật Thương mại quốc tế</option
+          ><option value="DMI">SP Mỹ thuật</option
+          ><option value="DNA">Thanh nhạc</option
+          ><option value="DNH">SP Âm nhạc</option
+          ><option value="DQG">Quản lý Giáo dục</option
+          ><option value="DQK">Quản trị kinh doanh</option
+          ><option value="DQT">Quốc tế học</option
+          ><option value="DQT_QTQH">Quan hệ quốc tế</option
+          ><option value="DQV">Quản trị văn phòng</option
+          ><option value="DSA">SP Tiếng Anh</option
+          ><option value="DSA_SACS">đào tạo giáo viên THCS</option
+          ><option value="DSA_SAPT">đào tạo giáo viên THPT</option
+          ><option value="DSI">SP Sinh học</option
+          ><option value="DSI_SICS">đào tạo giáo viên THCS</option
+          ><option value="DSI_SIPT">đào tạo giáo viên THPT</option
+          ><option value="DSP">SP Tiếng Pháp</option
+          ><option value="DSU">SP Lịch sử</option
+          ><option value="DSU_SUCS">đào tạo giáo viên THCS</option
+          ><option value="DSU_SUPT">đào tạo giáo viên THPT</option
+          ><option value="DTA">Tiếng Anh</option
+          ><option value="DTI">SP Tin</option
+          ><option value="DTL">Tâm lí học</option
+          ><option value="DTN">Tài chính - Ngân hàng</option
+          ><option value="DTN_TNNH">Ngân hàng</option
+          ><option value="DTN_TNTC">Tài chính</option
+          ><option value="DTO">SP Toán</option
+          ><option value="DTO_TOCS">đào tạo giáo viên THCS</option
+          ><option value="DTO_TOPT">đào tạo giáo viên THPT</option
+          ><option value="DTT">Thông tin - Thư viện</option
+          ><option value="DTU">Toán ứng dụng</option
+          ><option value="DTU_TUKT">Kinh tế định lượng</option
+          ><option value="DTU_TUTT">Toán tin ứng dụng</option
+          ><option value="DTV">Thư viện - Thông tin</option
+          ><option value="DVA">SP Ngữ văn</option
+          ><option value="DVA_VACS">đào tạo giáo viên THCS</option
+          ><option value="DVA_VAPT">đào tạo giáo viên THPT</option
+          ><option value="DVI">Việt Nam học</option
+          ><option value="HHC">Hóa hữu cơ</option
+          ><option value="HLT">Hóa lý thuyết và hóa lý</option
+          ><option value="KDKD">Kinh doanh</option
+          ><option value="KHGD">Khoa học giáo dục</option
+          ><option value="KHVC">Khoa học vật chất</option
+          ><option value="KMT">Khoa học máy tính</option
+          ><option value="LSV">Lịch sử Việt Nam</option
+          ><option value="MTMT">Máy tính</option
+          ><option value="NNH">Ngôn ngữ học</option
+          ><option value="NNVH">Ngôn ngữ và văn hóa nước ngoài</option
+          ><option value="NNVV">Ngôn ngữ và văn hóa Việt Nam</option
+          ><option value="NVNV">Nhân văn khác</option
+          ><option value="PPT"
+            >Lý luận và phương pháp dạy học bộ môn Toán</option
+          ><option value="QKD">Quản trị kinh doanh</option
+          ><option value="QLG">Quản lý giáo dục</option
+          ><option value="TCNB">Tài chính - Ngân hàng - Bảo hiểm</option
+          ><option value="TCT">Công nghệ thông tin (Chất lượng cao)</option
+          ><option value="TDN">Kế toán doanh nghiệp</option
+          ><option value="TGM">Giáo dục Mầm non</option
+          ><option value="TGT">Toán giải tích</option
+          ><option value="THTH">Toán học</option
+          ><option value="TKE">Kế toán (Chất lượng cao)</option
+          ><option value="TNH">Tài chính - Ngân hàng</option
+          ><option value="TQM">Quản trị mạng máy tính</option
+          ><option value="TSM">Sư phạm Mầm non</option
+          ><option value="VHV">Văn học Việt Nam</option></select
+        >
+
+        <select id="k" name="k">
+          <option value="K16">K16</option>
+          <option value="K17">K17</option>
+          <option value="K18">K18</option>
+          <option value="K19">K19</option>
+        </select>
+
+        <select id="semester">
+          <option value="HK1">HK1</option>
+          <option value="HK2">HK2</option>
+          <option value="HK3">HK3</option>
+        </select>
+
+        <!-- <input
           id="name"
           placeholder="Mời bạn điền name"
           type="text"
@@ -78,7 +270,7 @@
           type="text"
           value="nganh_cntt_k17_hk2_2020"
           name="value"
-        />
+        /> -->
         <button id="submit" type="button" onclick="submitFunc()">Gửi đi</button>
       </form>
 
@@ -98,10 +290,12 @@
             <td><%= item.firstId %></td>
             <td><%= item.total %></td>
             <td>
-              <strong style="color: red;font-weight: boldz;"><%= item.datetimeRequest %></strong>
+              <strong style="color: red; font-weight: boldz;"
+                ><%= item.datetimeRequest %></strong
+              >
             </td>
           </tr>
-  
+
           <% }) %>
         </table>
       </div>
