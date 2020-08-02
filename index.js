@@ -18,7 +18,7 @@ app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
 
 /** Run every 0am */
-schedule.scheduleJob({ hour: 0, minute: 1,tz: "Asia/Saigon" }, async function(){
+schedule.scheduleJob({ hour: 23, minute: 2,tz: "Asia/Saigon" }, async function(){
   console.log("Lets check some schedule");
   let data = fs.readFileSync("./data/schedule.json");
   data = JSON.parse(data);
