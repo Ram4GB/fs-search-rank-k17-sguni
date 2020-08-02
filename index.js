@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
 
-/** Run every 15 minutes */
+/** Run every 0am */
 schedule.scheduleJob({ hour: 0, minute: 1,tz: "Asia/Saigon" }, async function(){
   console.log("Lets check some schedule");
   let data = fs.readFileSync("./data/schedule.json");
