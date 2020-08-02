@@ -17,8 +17,12 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static(__dirname + "/public"));
 
-/** Run every 0am */
-schedule.scheduleJob({ hour: 23, minute: 2,tz: "Asia/Saigon" }, async function(){
+
+// Run every 5 minutes
+var rule = new schedule.RecurrenceRule();
+rule.minute = new schedule.Range(0, 59, 5);
+
+schedule.scheduleJob(rule, async function(){
   console.log("Lets check some schedule");
   let data = fs.readFileSync("./data/schedule.json");
   data = JSON.parse(data);
