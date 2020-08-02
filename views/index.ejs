@@ -91,7 +91,7 @@
           </div>
           <% if(data.count.length > 0) { %>
             <div>
-              <span style="font-weight: bold;">Những người đồng vị trí hạng <%= data.rank %> với bạn, hạng của bạn có thể nằm trong khoảng <%= data.rank %> - <%= parseInt(data.rank) + parseInt(data.count.length) + 1 %>: </span> <% data.count.forEach(function(e) { %>
+              <span style="font-weight: bold;">Những người đồng vị trí hạng <%= data.rank + 1 %> với bạn, hạng của bạn có thể nằm trong khoảng <%= data.rank + 1 %> - <%= parseInt(data.rank) + parseInt(data.count.length) + 1 %>: </span> <% data.count.forEach(function(e) { %>
                     <%= e.id %> |
               <% }) %>
             </div>
