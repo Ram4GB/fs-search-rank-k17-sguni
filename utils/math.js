@@ -1,10 +1,8 @@
 const fs = require("fs");
 const rp = require("request-promise");
 const cheerio = require("cheerio");
-const _ = require("lodash");
-const { request } = require("http");
 const util = require("util");
-
+const fileStorePath = './stores'
 
 module.exports = {
   getMyRank: (id, faculty) => {
@@ -13,7 +11,7 @@ module.exports = {
     if (!faculty) return null;
     if (!id) return null;
 
-    buffer = fs.readFileSync(`./data/${faculty}.json`);
+    buffer = fs.readFileSync(`${fileStorePath}/${faculty}.json`);
 
     let array = JSON.parse(buffer);
     array = array
@@ -29,16 +27,6 @@ module.exports = {
     });
 
     if (!objectInArray) return null;
-
-    // get rank
-
-    // let rank = 0;
-    // for (let i = 0; i < array.length; i++) {
-    //   if (parseInt(id) === parseInt(array[i].id)) {
-    //     rank = i;
-    //     break;
-    //   }
-    // }
 
     // get rank
     let index = array.findIndex((m) => {
@@ -74,8 +62,8 @@ module.exports = {
 
       fs.writeFile(
         fileName
-          ? `./data/${fileName}.json`
-          : `./data/${new Date().getFullYear()}.json`,
+          ? `${fileStorePath}/${fileName}.json`
+          : `${fileStorePath}/${new Date().getFullYear()}.json`,
         JSON.stringify(array),
         function (err) {
           console.log("Done ", err);
@@ -101,7 +89,11 @@ const createSingleStudentInfo = async (id) => {
     
     let point = $(".row-diemTK .Label").eq(3).text();
 
+    let point_contribution_lv10 = $(".row-diemTK .Label").eq(5).text();
+
     let point_contribution_lv4 = $(".row-diemTK .Label").eq(7).text();
+
+    let credit_reached = $(".row-diemTK .Label").eq(9).text();
 
     let session = $(".row-diemTK .Label").eq(11).text();
 
@@ -112,14 +104,18 @@ const createSingleStudentInfo = async (id) => {
         point,
         point_lv10,
         point_contribution_lv4,
+        point_contribution_lv10,
         session,
+        credit_reached
       };
     return {
       id,
       point: "0.00",
       point_lv10: "0.00",
       point_contribution_lv4: "0.00",
+      point_contribution_lv10:"0,00",
       session: 0,
+      credit_reached: 0
     };
   } catch (error) {
     console.log(`create single student info: ${error}`);
