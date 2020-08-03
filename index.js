@@ -23,39 +23,26 @@ app.use(express.static(__dirname + "/public"));
 var rule = new schedule.RecurrenceRule();
 rule.minute = new schedule.Range(0, 59, 5);
 
-// schedule.scheduleJob(rule, async function(){
-//   console.log("Lets check some schedule");
-//   let data = fs.readFileSync(scheduleFilePath);
-//   data = JSON.parse(data);
-//   let arr = [];
-//   for (let i = 0; i < data.length; i++) arr.push(algorithm(data[i]));
-//   if (arr.length > 0) {
-//     try {
-//       const result = await Promise.all(arr);
-//       console.log(util.inspect(result, false, null, true /* enable colors */));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     fs.writeFileSync(scheduleFilePath, JSON.stringify([]));
-//   }
-// });
+schedule.scheduleJob(rule, async function () {
+  console.log("Lets check some schedule");
+  readScheduleFileAndCrawl();
+});
 
 const readScheduleFileAndCrawl = async () => {
   let data = fs.readFileSync(scheduleFilePath);
   data = JSON.parse(data);
-  let arr = [];
-  for (let i = 0; i < data.length; i++) {
-    try {
-      // this function do not return anything so we do not have to console this, just await
-      await algorithm(data[i]);
-    } catch (error) {
-      console.log(error);
+  if (data && data.length > 0) {
+    for (let i = 0; i < data.length; i++) {
+      try {
+        // this function do not return anything so we do not have to console this, just await
+        await algorithm(data[i]);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    fs.writeFileSync(scheduleFilePath, JSON.stringify([]));
   }
-  fs.writeFileSync(scheduleFilePath, JSON.stringify([]));
 };
-
-readScheduleFileAndCrawl();
 
 const getListFaculty = (req, res, next) => {
   try {
